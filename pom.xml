@@ -9,8 +9,8 @@
     </parent>
 
     <groupId>io.trino.hive</groupId>
-    <artifactId>hive-apache</artifactId>
-    <version>3.1.2-24</version>
+    <artifactId>hive-hops</artifactId>
+    <version>3.1.2-24-HOPSHIVE</version>
 
     <name>hive-apache</name>
     <description>Shaded version of Apache Hive for Trino</description>
