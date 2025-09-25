@@ -10,7 +10,7 @@
 
     <groupId>io.trino.hive</groupId>
     <artifactId>hive-apache</artifactId>
-    <version>3.1.2-24-SNAPSHOT</version>
+    <version>3.1.2-24-HOPS</version>
 
     <name>hive-apache</name>
     <description>Shaded version of Apache Hive for Trino</description>
@@ -43,10 +43,10 @@
 
         <shadeBase>io.trino.hive.\$internal</shadeBase>
 
-        <dep.hive.version>3.1.2</dep.hive.version>
+        <dep.hive.version>3.0.0.13.10</dep.hive.version>
 
         <dep.avro.version>1.10.2</dep.avro.version>
-        <dep.hadoop.version>3.1.4</dep.hadoop.version>
+        <dep.hadoop.version>3.2.0.18-EE-SNAPSHOT</dep.hadoop.version>
         <dep.parquet.version>1.12.3</dep.parquet.version>
         <dep.protobuf.version>2.5.0</dep.protobuf.version>
         <dep.slf4j.version>1.7.29</dep.slf4j.version>
@@ -74,7 +74,7 @@
 
         <!-- hive -->
         <dependency>
-            <groupId>org.apache.hive</groupId>
+            <groupId>io.hops.hive</groupId>
             <artifactId>hive-metastore</artifactId>
             <version>${dep.hive.version}</version>
             <exclusions>
@@ -86,7 +86,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hive</groupId>
+            <groupId>io.hops.hive</groupId>
             <artifactId>hive-standalone-metastore</artifactId>
             <version>${dep.hive.version}</version>
             <exclusions>
@@ -166,11 +166,59 @@
                     <groupId>sqlline</groupId>
                     <artifactId>sqlline</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-http</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-context-log4j2</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-common-protos</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-iam-v1</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.microsoft.azure</groupId>
+                    <artifactId>azure-data-lake-store-sdk</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.htrace</groupId>
+                    <artifactId>htrace-core4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-zipkin</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.zipkin2</groupId>
+                    <artifactId>zipkin</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hive</groupId>
+            <groupId>io.hops.hive</groupId>
             <artifactId>hive-serde</artifactId>
             <version>${dep.hive.version}</version>
             <exclusions>
@@ -218,11 +266,59 @@
                     <groupId>com.google.code.findbugs</groupId>
                     <artifactId>jsr305</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-http</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-context-log4j2</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-common-protos</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-iam-v1</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.microsoft.azure</groupId>
+                    <artifactId>azure-data-lake-store-sdk</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.htrace</groupId>
+                    <artifactId>htrace-core4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-zipkin</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.zipkin2</groupId>
+                    <artifactId>zipkin</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hive</groupId>
+            <groupId>io.hops.hive</groupId>
             <artifactId>hive-exec</artifactId>
             <version>${dep.hive.version}</version>
             <classifier>core</classifier>
@@ -319,11 +415,59 @@
                     <groupId>stax</groupId>
                     <artifactId>stax-api</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-http</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-context-log4j2</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-common-protos</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-iam-v1</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.microsoft.azure</groupId>
+                    <artifactId>azure-data-lake-store-sdk</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.htrace</groupId>
+                    <artifactId>htrace-core4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-zipkin</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.zipkin2</groupId>
+                    <artifactId>zipkin</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hive</groupId>
+            <groupId>io.hops.hive</groupId>
             <artifactId>hive-common</artifactId>
             <version>${dep.hive.version}</version>
             <exclusions>
@@ -403,11 +547,59 @@
                     <groupId>commons-cli</groupId>
                     <artifactId>commons-cli</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-http</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-context-log4j2</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-instrumentation-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-common-protos</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.api.grpc</groupId>
+                    <artifactId>proto-google-iam-v1</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.microsoft.azure</groupId>
+                    <artifactId>azure-data-lake-store-sdk</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.htrace</groupId>
+                    <artifactId>htrace-core4</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.brave</groupId>
+                    <artifactId>brave-zipkin</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.zipkin.zipkin2</groupId>
+                    <artifactId>zipkin</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hive.hcatalog</groupId>
+            <groupId>io.hops.hive.hcatalog</groupId>
             <artifactId>hive-hcatalog-core</artifactId>
             <version>${dep.hive.version}</version>
             <exclusions>
@@ -551,7 +743,7 @@
 
         <!-- Hadoop compilation dependencies -->
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
+            <groupId>io.hops</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>${dep.hadoop.version}</version>
             <scope>provided</scope>
@@ -564,7 +756,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
+            <groupId>io.hops</groupId>
             <artifactId>hadoop-mapreduce-client-core</artifactId>
             <version>${dep.hadoop.version}</version>
             <scope>provided</scope>
@@ -780,6 +972,15 @@
                                         <exclude>org/apache/hadoop/hive/ql/io/parquet/timestamp/NanoTimeUtils.class</exclude>
                                         <exclude>org/apache/hadoop/hive/ql/io/parquet/timestamp/NanoTimeUtils$*.class</exclude>
                                         <exclude>org/apache/tez/**</exclude>
+                                        <!-- Exclude all embedded Parquet classes -->
+                                        <exclude>org/apache/parquet/**</exclude>
+                                        <exclude>parquet/**</exclude>
+                                        <exclude>shaded/parquet/**</exclude>
+                                        <!-- Exclude conflicting resource files -->
+                                        <exclude>**/*.proto</exclude>
+                                        <exclude>parquet.thrift</exclude>
+                                        <exclude>parquet_types.thrift</exclude>
+                                        <exclude>google/**/*.proto</exclude>
                                     </excludes>
                                 </filter>
                                 <filter>
@@ -827,6 +1028,183 @@
                                         <exclude>META-INF/services/**</exclude>
                                     </excludes>
                                 </filter>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <!-- Exclude duplicate Brave tracing classes -->
+                                        <exclude>brave/**</exclude>
+                                        <!-- Exclude all repackaged classes to avoid duplicates -->
+                                        <exclude>com/lc/repackaged/**</exclude>
+                                        <!-- Exclude Microsoft shaded classes -->
+                                        <exclude>com/microsoft/shaded/**</exclude>
+                                        <!-- Exclude shaded Netty classes -->
+                                        <exclude>org/apache/hadoop/shaded/**</exclude>
+                                        <!-- Exclude HTrace shaded classes -->
+                                        <exclude>org/apache/htrace/shaded/**</exclude>
+                                        <!-- Exclude HTrace core classes -->
+                                        <exclude>org/apache/htrace/core/**</exclude>
+                                        <!-- Exclude Zipkin tracing classes -->
+                                        <exclude>zipkin2/**</exclude>
+                                        <!-- Exclude conflicting Hops classes - keep from Hadoop dependency only -->
+                                        <exclude>io/hops/**</exclude>
+                                        <!-- Exclude Hadoop classes but keep Hive-specific ones -->
+                                        <exclude>org/apache/hadoop/classification/**</exclude>
+                                        <exclude>org/apache/hadoop/fs/**</exclude>
+                                        <exclude>org/apache/hadoop/hdfs/**</exclude>
+                                        <exclude>org/apache/hadoop/conf/**</exclude>
+                                        <exclude>org/apache/hadoop/io/**</exclude>
+                                        <exclude>org/apache/hadoop/util/**</exclude>
+                                        <exclude>org/apache/hadoop/security/**</exclude>
+                                        <exclude>org/apache/hadoop/net/**</exclude>
+                                        <exclude>org/apache/hadoop/ipc/**</exclude>
+                                        <exclude>org/apache/hadoop/crypto/**</exclude>
+                                        <exclude>org/apache/hadoop/metrics/**</exclude>
+                                        <exclude>org/apache/hadoop/yarn/**</exclude>
+                                        <exclude>org/apache/hadoop/mapred/**</exclude>
+                                        <exclude>org/apache/hadoop/mapreduce/**</exclude>
+                                        <exclude>org/apache/hadoop/tools/**</exclude>
+                                        <exclude>org/apache/hadoop/service/**</exclude>
+                                        <exclude>org/apache/hadoop/log/**</exclude>
+                                        <!-- Keep org/apache/hadoop/hive/** - this is needed for Hive functionality -->
+                                        <!-- Exclude ALL third-party libraries that conflict with Trino dependencies -->
+                                        <!-- Exclude Netty libraries -->
+                                        <exclude>io/netty/**</exclude>
+                                        <!-- Exclude Google libraries -->
+                                        <exclude>com/google/common/**</exclude>
+                                        <exclude>com/google/inject/**</exclude>
+                                        <exclude>com/google/errorprone/**</exclude>
+                                        <exclude>com/google/j2objc/**</exclude>
+                                        <exclude>com/google/protobuf/**</exclude>
+                                        <exclude>com/google/gson/**</exclude>
+                                        <!-- Exclude Apache Avro -->
+                                        <exclude>org/apache/avro/**</exclude>
+                                        <!-- Exclude Apache Parquet - but this seems to not be working fully -->
+                                        <exclude>org/apache/parquet/**</exclude>
+                                        <exclude>parquet/**</exclude>
+                                        <exclude>shaded/parquet/**</exclude>
+                                        <!-- Exclude Apache Thrift -->
+                                        <exclude>org/apache/thrift/**</exclude>
+                                        <!-- Exclude logging libraries -->
+                                        <exclude>org/slf4j/**</exclude>
+                                        <exclude>org/apache/logging/**</exclude>
+                                        <exclude>org/apache/log4j/**</exclude>
+                                        <!-- Exclude Joda Time -->
+                                        <exclude>org/joda/**</exclude>
+                                        <!-- Exclude Checker Framework -->
+                                        <exclude>org/checkerframework/**</exclude>
+                                        <!-- Exclude AOP Alliance -->
+                                        <exclude>org/aopalliance/**</exclude>
+                                        <!-- Exclude javax annotations -->
+                                        <exclude>javax/**</exclude>
+                                        <!-- Exclude JLine command line library -->
+                                        <exclude>org/jline/**</exclude>
+                                        <!-- Exclude Args4j argument parsing library -->
+                                        <exclude>org/kohsuke/args4j/**</exclude>
+                                        <!-- Exclude XML encoding library -->
+                                        <exclude>org/znerd/xmlenc/**</exclude>
+                                        <!-- Exclude additional third-party libraries found in Hive fat JAR -->
+                                        <!-- Exclude JCommander -->
+                                        <exclude>com/beust/jcommander/**</exclude>
+                                        <!-- Exclude ESRI Geometry -->
+                                        <exclude>com/esri/**</exclude>
+                                        <!-- Exclude Nimbus libraries -->
+                                        <exclude>com/nimbusds/**</exclude>
+                                        <!-- Exclude JNA -->
+                                        <exclude>com/sun/jna/**</exclude>
+                                        <!-- Exclude Jersey/JAX-RS -->
+                                        <exclude>org/glassfish/jersey/**</exclude>
+                                        <exclude>org/glassfish/hk2/**</exclude>
+                                        <exclude>com/sun/research/ws/wadl/**</exclude>
+                                        <exclude>jersey/repackaged/**</exclude>
+                                        <!-- Exclude Jetty -->
+                                        <exclude>org/eclipse/jetty/**</exclude>
+                                        <!-- Exclude OkHttp/OkIO -->
+                                        <exclude>okhttp3/**</exclude>
+                                        <exclude>okio/**</exclude>
+                                        <!-- Exclude Javassist -->
+                                        <exclude>javassist/**</exclude>
+                                        <!-- Exclude JUnit -->
+                                        <exclude>junit/**</exclude>
+                                        <!-- Exclude JSON libraries -->
+                                        <exclude>net/minidev/**</exclude>
+                                        <!-- Exclude JCIP annotations -->
+                                        <exclude>net/jcip/**</exclude>
+                                        <!-- Exclude Aircompressor -->
+                                        <exclude>io/airlift/compress/**</exclude>
+                                        <!-- Exclude additional Sun/Oracle libraries -->
+                                        <exclude>com/sun/istack/**</exclude>
+                                        <exclude>com/sun/xml/**</exclude>
+                                        <exclude>org/jvnet/**</exclude>
+                                        <!-- Exclude AWS SDK -->
+                                        <exclude>com/amazonaws/**</exclude>
+                                        <!-- Exclude Azure SDK -->
+                                        <exclude>com/azure/**</exclude>
+                                        <exclude>com/microsoft/aad/**</exclude>
+                                        <!-- Exclude Reactive Libraries -->
+                                        <exclude>reactor/**</exclude>
+                                        <exclude>io/projectreactor/**</exclude>
+                                        <!-- Exclude gRPC -->
+                                        <exclude>io/grpc/**</exclude>
+                                        <!-- Exclude OpenCensus -->
+                                        <exclude>io/opencensus/**</exclude>
+                                        <!-- Exclude Apache HTTP -->
+                                        <exclude>org/apache/http/**</exclude>
+                                        <!-- Exclude Woodstox XML -->
+                                        <exclude>com/ctc/wstx/**</exclude>
+                                        <exclude>org/codehaus/stax2/**</exclude>
+                                        <!-- Exclude ThreeTen Time -->
+                                        <exclude>org/threeten/bp/**</exclude>
+                                        <!-- Exclude Reactive Streams -->
+                                        <exclude>org/reactivestreams/**</exclude>
+                                        <!-- Exclude Apache Calcite -->
+                                        <exclude>org/apache/calcite/**</exclude>
+                                        <!-- Exclude Animal Sniffer -->
+                                        <exclude>org/codehaus/mojo/animal_sniffer/**</exclude>
+                                        <!-- Exclude conflicting resources -->
+                                        <exclude>META-INF/services/org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor</exclude>
+                                        <exclude>**/*.proto</exclude>
+                                        <exclude>log4j*.properties</exclude>
+                                        <exclude>Log4j-charsets.properties</exclude>
+                                        <exclude>parquet.thrift</exclude>
+                                        <exclude>parquet_types.thrift</exclude>
+                                        <exclude>**/parquet/**/*.proto</exclude>
+                                        <exclude>**/google/protobuf/**</exclude>
+                                        <!-- Exclude Hadoop configuration files -->
+                                        <exclude>hdfs-default.xml</exclude>
+                                        <exclude>erasure-coding-default.xml</exclude>
+                                        <exclude>storage.v1.json</exclude>
+                                        <!-- Exclude JLine resource files -->
+                                        <exclude>org/jline/**/*.txt</exclude>
+                                        <exclude>org/jline/**/*.caps</exclude>
+                                        <exclude>org/jline/**/*.properties</exclude>
+                                        <!-- Exclude Args4j resource files -->
+                                        <exclude>org/kohsuke/args4j/**/*.properties</exclude>
+                                        <!-- Exclude additional resource files -->
+                                        <exclude>com/esri/**/*.txt</exclude>
+                                        <exclude>com/sun/jna/**/*.template</exclude>
+                                        <exclude>com/sun/jna/**/*.so</exclude>
+                                        <exclude>com/sun/jna/**/*.a</exclude>
+                                        <exclude>com/sun/jna/**/*.dll</exclude>
+                                        <exclude>junit/**/*.gif</exclude>
+                                        <exclude>org/eclipse/jetty/**/*.properties</exclude>
+                                        <exclude>org/glassfish/**/*.properties</exclude>
+                                        <exclude>assets/**/*.properties</exclude>
+                                        <exclude>assets/**/*</exclude>
+                                        <exclude>tables/**/*.bin</exclude>
+                                        <!-- Exclude additional resource files -->
+                                        <exclude>com/amazonaws/**/*.json</exclude>
+                                        <exclude>com/amazonaws/**/*.properties</exclude>
+                                        <exclude>azure-*.properties</exclude>
+                                        <exclude>com/ctc/wstx/**/*.properties</exclude>
+                                        <exclude>org/apache/calcite/**/*.properties</exclude>
+                                        <exclude>org/apache/http/**/*.properties</exclude>
+                                        <exclude>org/threeten/bp/**/*.dat</exclude>
+                                        <exclude>org/threeten/bp/**/*.properties</exclude>
+                                        <exclude>dependencies.properties</exclude>
+                                        <exclude>mime.types</exclude>
+                                        <exclude>mozilla/public-suffix-list.txt</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                         </configuration>
                     </execution>
@@ -872,4 +1250,30 @@
             </plugins>
         </pluginManagement>
     </build>
+    <repositories>
+      <repository>
+        <id>HopsEE</id>
+        <name>Hops Release Repository</name>
+        <url>https://nexus.hops.works/repository/hops-artifacts</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>interval:15</updatePolicy>
+        </snapshots>
+      </repository>
+      <repository>
+        <id>HiveEE</id>
+        <name>Hive Release Repository</name>
+        <url>https://nexus.hops.works/repository/hive-artifacts</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>interval:15</updatePolicy>
+        </snapshots>
+      </repository>
+    </repositories>
 </project>
