@@ -167,7 +167,7 @@ class AvroDeserializer {
     AvroGenericRecordWritable recordWritable = (AvroGenericRecordWritable) writable;
     GenericRecord r = recordWritable.getRecord();
     Schema fileSchema = recordWritable.getFileSchema();
-    writerTimezone = recordWritable.getWriterTimezone();
+    writerTimezone = null; //recordWritable.getWriterTimezone();
 
    UID recordReaderId = recordWritable.getRecordReaderID();
    //If the record reader (from which the record is originated) is already seen and valid,
@@ -327,13 +327,13 @@ class AvroDeserializer {
       // to the server's (reader) time zone for backwards compatibility reasons - unless the
       // session level configuration hive.avro.timestamp.skip.conversion is set to true, in which
       // case we assume it was written by a time zone agnostic writer, so we don't convert it.
-      boolean skipConversion;
-      if (configuration != null) {
-        skipConversion = HiveConf.getBoolVar(
-            configuration, HiveConf.ConfVars.HIVE_AVRO_TIMESTAMP_SKIP_CONVERSION);
-      } else {
-        skipConversion = HiveConf.ConfVars.HIVE_AVRO_TIMESTAMP_SKIP_CONVERSION.defaultBoolVal;
-      }
+      boolean skipConversion = false;
+      //if (configuration != null) {
+      //  skipConversion = HiveConf.getBoolVar(
+      //      configuration, HiveConf.ConfVars.HIVE_AVRO_TIMESTAMP_SKIP_CONVERSION);
+      //} else {
+      //  skipConversion = HiveConf.ConfVars.HIVE_AVRO_TIMESTAMP_SKIP_CONVERSION.defaultBoolVal;
+      //}
       ZoneId convertToTimeZone;
       if (writerTimezone != null) {
         convertToTimeZone = writerTimezone;

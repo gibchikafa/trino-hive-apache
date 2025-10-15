@@ -175,14 +175,14 @@ public class AvroGenericRecordReader implements
     }
     try (DataFileReader<GenericRecord> dataFileReader = new DataFileReader<GenericRecord>(
         new FsInput(split.getPath(), job), gdr)) {
-      if (dataFileReader.getMeta(AvroSerDe.WRITER_TIME_ZONE) != null) {
-        try {
-          return ZoneId.of(new String(dataFileReader.getMeta(AvroSerDe.WRITER_TIME_ZONE),
-              StandardCharsets.UTF_8));
-        } catch (DateTimeException e) {
-          throw new RuntimeException("Can't parse writer time zone stored in file metadata", e);
-        }
-      }
+      //if (dataFileReader.getMeta(AvroSerDe.WRITER_TIME_ZONE) != null) {
+      //  try {
+      //    return ZoneId.of(new String(dataFileReader.getMeta(AvroSerDe.WRITER_TIME_ZONE),
+      //        StandardCharsets.UTF_8));
+      //  } catch (DateTimeException e) {
+      //    throw new RuntimeException("Can't parse writer time zone stored in file metadata", e);
+      //  }
+      //}
     } catch (IOException e) {
       // Can't access metadata, carry on.
       LOG.debug(e.getMessage(), e);
@@ -222,7 +222,7 @@ public class AvroGenericRecordReader implements
 
   @Override
   public AvroGenericRecordWritable createValue() {
-    return new AvroGenericRecordWritable(writerTimezone);
+    return new AvroGenericRecordWritable();
   }
 
   @Override
