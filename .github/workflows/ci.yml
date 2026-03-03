@@ -21,9 +21,9 @@ jobs:
         if: github.event_name == 'pull_request'
         run: mvn clean install -B -DskipTests
       - name: Build (Push - No Deploy)
-        if: github.event_name == 'push' && (github.repository != 'logicalclocks/trino-hadoop-apache' || (!startsWith(github.ref, 'refs/heads/branch-') && github.ref != 'refs/heads/master'))
+        if: github.event_name == 'push' && (github.repository != 'logicalclocks/trino-hive-apache' || (!startsWith(github.ref, 'refs/heads/branch-') && github.ref != 'refs/heads/master'))
         run: mvn clean install -B -DskipTests
       - name: Build and Deploy (Push to release branches on logicalclocks) 
-        if: github.event_name == 'push' && github.repository == 'logicalclocks/trino-hadoop-apache' && (startsWith(github.ref, 'refs/heads/branch-') || github.ref == 'refs/heads/master')
+        if: github.event_name == 'push' && github.repository == 'logicalclocks/trino-hive-apache' && (startsWith(github.ref, 'refs/heads/branch-') || github.ref == 'refs/heads/master')
         run: mvn clean install deploy -B -DskipTests
 
