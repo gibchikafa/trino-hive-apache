@@ -101,7 +101,7 @@
 
     <dependency>
       <groupId>io.hops.hive</groupId>
-      <artifactId>hive-standalone-metastore</artifactId>
+      <artifactId>hive-standalone-metastore-server</artifactId>
       <version>${dep.hive.version}</version>
       <exclusions>
         <exclusion>
@@ -1062,7 +1062,7 @@
                   </excludes>
                 </filter>
                 <filter>
-                  <artifact>org.apache.hive:hive-standalone-metastore</artifact>
+                  <artifact>io.hops.hive:hive-standalone-metastore-server</artifact>
                   <excludes>
                     <exclude>package.jdo</exclude>
                     <exclude>org/apache/hadoop/hive/metastore/api/**</exclude>
