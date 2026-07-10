@@ -10,7 +10,7 @@
 
   <groupId>io.hops.hive</groupId>
   <artifactId>hive-apache</artifactId>
-  <version>3.0.0.14.5</version>
+  <version>4.1.0-1</version>
 
   <name>hive-apache</name>
   <description>Shaded version of Apache Hive for Trino</description>
@@ -53,14 +53,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.build.targetJdk>1.8</project.build.targetJdk>
+    <project.build.targetJdk>17</project.build.targetJdk>
 
     <shadeBase>io.trino.hive.\$internal</shadeBase>
 
-    <dep.hive.version>3.0.0.14.5</dep.hive.version>
+    <dep.hive.version>4.1.0</dep.hive.version>
 
     <dep.avro.version>1.10.2</dep.avro.version>
-    <dep.hadoop.version>3.4.3.1-EE-RC0</dep.hadoop.version>
+    <dep.hadoop.version>3.4.3.2-EE-RC0</dep.hadoop.version>
     <dep.parquet.version>1.12.3</dep.parquet.version>
     <dep.protobuf.version>2.5.0</dep.protobuf.version>
     <dep.slf4j.version>1.7.29</dep.slf4j.version>
@@ -101,7 +101,7 @@
 
     <dependency>
       <groupId>io.hops.hive</groupId>
-      <artifactId>hive-standalone-metastore</artifactId>
+      <artifactId>hive-standalone-metastore-server</artifactId>
       <version>${dep.hive.version}</version>
       <exclusions>
         <exclusion>
@@ -850,42 +850,6 @@
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-              <executable>${basedir}/bin/generate-sources.sh</executable>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.2.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/generated-sources/thrift/</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>1.2</version>
@@ -938,7 +902,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <goals>
@@ -1022,6 +986,9 @@
                   <artifact>*:*</artifact>
                   <excludes>
                     <exclude>META-INF/maven/**</exclude>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
                   </excludes>
                 </filter>
                 <filter>
@@ -1062,7 +1029,7 @@
                   </excludes>
                 </filter>
                 <filter>
-                  <artifact>org.apache.hive:hive-standalone-metastore</artifact>
+                  <artifact>io.hops.hive:hive-standalone-metastore-server</artifact>
                   <excludes>
                     <exclude>package.jdo</exclude>
                     <exclude>org/apache/hadoop/hive/metastore/api/**</exclude>

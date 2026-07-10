@@ -103,17 +103,19 @@ public class JsonSerDe extends AbstractSerDe {
   private TimestampParser tsParser;
 
   @Override
-  public void initialize(Configuration conf, Properties tbl)
+  public void initialize(Configuration conf, Properties tableProperties, Properties partitionProperties)
     throws SerDeException {
+    super.initialize(conf, tableProperties, partitionProperties);
+
     List<TypeInfo> columnTypes;
     StructTypeInfo rowTypeInfo;
 
-    LOG.debug("Initializing JsonSerDe: {}", tbl.entrySet());
+    LOG.debug("Initializing JsonSerDe: {}", tableProperties.entrySet());
 
     // Get column names and types
-    String columnNameProperty = tbl.getProperty(serdeConstants.LIST_COLUMNS);
-    String columnTypeProperty = tbl.getProperty(serdeConstants.LIST_COLUMN_TYPES);
-    final String columnNameDelimiter = tbl.containsKey(serdeConstants.COLUMN_NAME_DELIMITER) ? tbl
+    String columnNameProperty = tableProperties.getProperty(serdeConstants.LIST_COLUMNS);
+    String columnTypeProperty = tableProperties.getProperty(serdeConstants.LIST_COLUMN_TYPES);
+    final String columnNameDelimiter = tableProperties.containsKey(serdeConstants.COLUMN_NAME_DELIMITER) ? tableProperties
         .getProperty(serdeConstants.COLUMN_NAME_DELIMITER) : String.valueOf(SerDeUtils.COMMA);
     // all table column names
     if (columnNameProperty.isEmpty()) {
@@ -150,7 +152,7 @@ public class JsonSerDe extends AbstractSerDe {
     // Interning all encountered field names improves little compared to the per-factory canonical name cache and can cause native memory issues
     jsonFactory = new JsonFactory().disable(JsonParser.Feature.INTERN_FIELD_NAMES);
     tsParser = new TimestampParser(
-        HiveStringUtils.splitAndUnEscape(tbl.getProperty(serdeConstants.TIMESTAMP_FORMATS)));
+        HiveStringUtils.splitAndUnEscape(tableProperties.getProperty(serdeConstants.TIMESTAMP_FORMATS)));
   }
 
   /**
